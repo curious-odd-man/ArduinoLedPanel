@@ -32,7 +32,7 @@ void LedService::drawPixel(uint8_t x, uint8_t y, CRGB &color) {
     Leds::drawPixel(x, y, color);
 }
 
-void LedService::startNewProgram(LightProgram *program) {
+void LedService::startNewProgram(ImageProgram *program) {
     deleteProgram();
     imageProgram = program;
 }

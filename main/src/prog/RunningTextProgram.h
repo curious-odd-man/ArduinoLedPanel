@@ -1,14 +1,14 @@
 #ifndef RUNNINGTEXTPROGRAM_H_
 #define RUNNINGTEXTPROGRAM_H_
 
+#include "ImageProgram.h"
 #include "WString.h"
 
-#include "LightProgram.h"
 #include "../util/TimerMs.h"
 #include "../util/Leds.h"
 
 
-class RunningTextProgram: public LightProgram {
+class RunningTextProgram: public ImageProgram {
 public:
     RunningTextProgram(const char* text, const CRGB &color);
     virtual void loop() override;

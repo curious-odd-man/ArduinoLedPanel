@@ -1,10 +1,10 @@
 #ifndef ROLLINGBALLPROGRAM_H_
 #define ROLLINGBALLPROGRAM_H_
 
-#include "LightProgram.h"
+#include "ImageProgram.h"
 #include "../util/Point2d.h"
 
-class RollingBallProgram: public LightProgram {
+class RollingBallProgram: public ImageProgram {
 public:
     RollingBallProgram(uint8_t size);
     virtual void loop() override;

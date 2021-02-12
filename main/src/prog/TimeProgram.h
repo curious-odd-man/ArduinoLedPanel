@@ -1,10 +1,10 @@
 #ifndef TIMEPROGRAM_H_
 #define TIMEPROGRAM_H_
 
-#include "LightProgram.h"
+#include "ImageProgram.h"
 #include "../util/TimerMs.h"
 
-class TimeProgram: public LightProgram {
+class TimeProgram: public ImageProgram {
 public:
     TimeProgram();
     virtual void loop() override;

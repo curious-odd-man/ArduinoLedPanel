@@ -1,11 +1,11 @@
 #ifndef SNOWPROGRAM_H_
 #define SNOWPROGRAM_H_
 
+#include "ImageProgram.h"
 #include <stdint.h>
 #include <queue>
 
 #include "../util/Leds.h"
-#include "LightProgram.h"
 
 struct Snowflake {
     uint8_t x;
@@ -37,7 +37,7 @@ public:
     bool operator()(const Snowflake *lhs, const Snowflake *rhs) const;
 };
 
-class SnowProgram: public LightProgram {
+class SnowProgram: public ImageProgram {
 public:
     SnowProgram();
     virtual void loop() override;

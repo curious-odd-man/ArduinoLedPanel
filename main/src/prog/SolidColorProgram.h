@@ -1,10 +1,10 @@
 #ifndef LEDS_SOLIDCOLORPROGRAM_H_
 #define LEDS_SOLIDCOLORPROGRAM_H_
 
-#include "LightProgram.h"
+#include "ImageProgram.h"
 #include "../util/Leds.h"
 
-class SolidColorProgram: public LightProgram {
+class SolidColorProgram: public ImageProgram {
 private:
     CRGB color;
     bool isSet;

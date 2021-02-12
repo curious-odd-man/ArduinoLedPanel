@@ -1,9 +1,9 @@
 #ifndef RANDOMCOLORPROGRAM_H_
 #define RANDOMCOLORPROGRAM_H_
 
+#include "ImageProgram.h"
 #include <set>
 
-#include "LightProgram.h"
 #include "../util/TimerMs.h"
 #include "../util/Leds.h"
 
@@ -37,7 +37,7 @@ public:
     }
 };
 
-class RandomColorProgram: public LightProgram {
+class RandomColorProgram: public ImageProgram {
 public:
     RandomColorProgram();
     virtual void loop() override;

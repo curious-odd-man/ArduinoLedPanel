@@ -55,7 +55,7 @@ void WebServer::srv_handle_modes() {
 
 static int currentProgram = -1;
 
-typedef std::function<LightProgram* ()> ProgSupplier;
+typedef std::function<ImageProgram* ()> ProgSupplier;
 
 static const ProgSupplier suppliers[] = { []() {
 	return new RunningTextProgram("Hello Alina! Моя любимая женушка!",
