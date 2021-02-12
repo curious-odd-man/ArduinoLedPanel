@@ -1,0 +1,7 @@
+#ifndef SENSITIVEINFORMATION_H_
+#define SENSITIVEINFORMATION_H_
+
+constexpr char ssid[] = "";
+constexpr char password[] = "";
+
+#endif /* SENSITIVEINFORMATION_H_ */
