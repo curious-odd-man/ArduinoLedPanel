@@ -1,0 +1,32 @@
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+Release
+
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT- autotools
+.autotools
+
+
+OldWay/spec.d
+
+GyverSample
+tests/run/*.o
+tests/run/*.cpp
+tests_app/*.exe
+
+main/src/SensitiveInformation.h
