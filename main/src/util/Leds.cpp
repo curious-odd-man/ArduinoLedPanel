@@ -5,7 +5,7 @@
 namespace Leds {
 
 static constexpr int LED_PIN = 2;
-static constexpr int CURRENT_LIMIT = 5000; // mA, 0 to turn off
+static constexpr int CURRENT_LIMIT = 400; // mA, 0 to turn off
 static constexpr int BRIGHTNESS = 100;
 static constexpr EOrder COLOR_ORDER = GRB;
 
