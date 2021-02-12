@@ -30,3 +30,8 @@ tests/run/*.cpp
 tests_app/*.exe
 
 main/src/SensitiveInformation.h
+
+
+# monitoring
+monitoring/data/prometheus/data
+monitoring/data/grafana

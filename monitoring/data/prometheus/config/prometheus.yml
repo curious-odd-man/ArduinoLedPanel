@@ -1,0 +1,36 @@
+# my global config
+global:
+  # How frequently to scrape targets by default.
+  # [ scrape_interval: <duration> | default = 1m ]
+  scrape_interval: 10s
+
+  # How long until a scrape request times out.
+  # [ scrape_timeout: <duration> | default = 10s ]
+
+  # How frequently to evaluate rules.
+  # [ evaluation_interval: <duration> | default = 1m ]
+
+  # The labels to add to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  #external_labels:
+  #  [ <labelname>: <labelvalue> ... ]
+
+# A list of scrape configurations.
+scrape_configs:
+  # The job name assigned to scraped metrics by default.
+  - job_name: 'ESP8266_LEDS'
+
+    # How frequently to scrape targets from this job.
+    #[ scrape_interval: <duration> | default = <global_config.scrape_interval> ]
+
+    # Per-scrape timeout when scraping this job.
+    #[ scrape_timeout: <duration> | default = <global_config.scrape_timeout> ]
+
+    # The HTTP resource path on which to fetch metrics from targets.
+    # [ metrics_path: <path> | default = /metrics ]
+    metrics_path: '/prometheus'
+
+    # List of labeled statically configured targets for this job.
+    static_configs:
+      - targets:
+          - '192.168.0.195'
