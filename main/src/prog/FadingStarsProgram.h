@@ -37,11 +37,11 @@ public:
     }
 };
 
-class RandomColorProgram: public ImageProgram {
+class FadingStarsProgram: public ImageProgram {
 public:
-    RandomColorProgram();
+    FadingStarsProgram();
     virtual void loop() override;
-    virtual ~RandomColorProgram();
+    virtual ~FadingStarsProgram();
 private:
     TimerMs newColorTimer;
     TimerMs fadePixelTimer;

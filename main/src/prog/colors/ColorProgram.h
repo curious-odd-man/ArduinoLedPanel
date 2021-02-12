@@ -2,7 +2,7 @@
 #define SRC_PROG_COLORS_COLORPROGRAM_H_
 
 #include <stdint.h>
-#include <FastLED.h>
+#include "../../util/Leds.h"
 
 class ColorProgram {
 public:

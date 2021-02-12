@@ -1,20 +1,20 @@
-#include "RandomColorProgram.h"
+#include "FadingStarsProgram.h"
 
 using namespace std;
 
-RandomColorProgram::RandomColorProgram() :
+FadingStarsProgram::FadingStarsProgram() :
         newColorTimer(200), fadePixelTimer(10) {
     CRGB aqua = CRGB::Black;
     Leds::fillLeds(aqua);
 }
 
-void RandomColorProgram::loop() {
+void FadingStarsProgram::loop() {
     if (newColorTimer.isReady()) {
         int r = random(255);
         int g = random(255);
         int b = random(255);
-        int x = random(Leds::maxX() + 1);
-        int y = random(Leds::maxY() + 1);
+        int x = random(Leds::width());
+        int y = random(Leds::height());
         Fader *fader = new Fader(CRGB(r, g, b), x, y);
 
         pair<set<Fader*>::iterator, bool> ret = faders.insert(fader);
@@ -43,7 +43,7 @@ void RandomColorProgram::loop() {
     }
 }
 
-RandomColorProgram::~RandomColorProgram() {
+FadingStarsProgram::~FadingStarsProgram() {
 
 }
 
