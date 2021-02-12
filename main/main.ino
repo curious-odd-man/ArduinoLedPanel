@@ -13,7 +13,13 @@
 #include "src/svc/Safeguard.h"
 #include "src/SensitiveInformation.h"
 
+#include "src/metrics/MetricsCollector.h"
+
 using namespace std;
+
+#ifdef COLLECT_METRIX
+ADC_MODE(ADC_VCC);
+#endif
 
 constexpr char compile_date[] = __DATE__ " " __TIME__;
 
@@ -21,8 +27,8 @@ constexpr int HTTP_PORT = 80;
 
 static LedService ledService = LedService();
 static WebServer webServer(HTTP_PORT, ledService);
-static WiFiWrapper wifiWrapper = WiFiWrapper(ssid, password);
-static ArduinoOtaWrapper otaWrapper = ArduinoOtaWrapper();
+static WiFiWrapper wifiWrapper(ssid, password);
+static ArduinoOtaWrapper otaWrapper;
 
 static list<Service*> services;
 static TimerMs watchdogFeedTimer(1000);
@@ -36,6 +42,9 @@ void setup() {
 
 	LOGF("Booting. Version-@%s\n", compile_date);
 	PerMem::init();
+#ifdef COLLECT_METRIX
+	MetricsCollector::init();
+#endif
 	uint8_t compileDateHash = getHash(compile_date, sizeof(compile_date));
 
 	safeguard.init(compileDateHash);
@@ -54,6 +63,7 @@ void setup() {
 	}
 
 	for (Service *service : services) {
+		LOG("Starting service...");
 		service->begin();
 	}
 
@@ -61,6 +71,9 @@ void setup() {
 }
 
 void loop() {
+#ifdef COLLECT_METRIX
+	unsigned long loopStart = micros();
+#endif
 	for (Service *service : services) {
 		service->loop();
 	}
@@ -72,4 +85,8 @@ void loop() {
 	}
 
 	safeguard.loop();
+
+#ifdef COLLECT_METRIX
+	MetricsCollector::logLoopTotalTime(loopStart, micros());
+#endif
 }

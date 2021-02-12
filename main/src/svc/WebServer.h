@@ -6,6 +6,7 @@
 
 #include "Service.h"
 #include "LedService.h"
+#include "../metrics/MetricsCollector.h"
 
 class WebServer: public Service {
 public:
@@ -22,6 +23,9 @@ private:
     void srv_handle_main_js();
     void srv_handle_modes();
     void srv_handle_set();
+#ifdef COLLECT_METRIX
+	void srv_prometheus();
+#endif
     void modes_setup();
 };
 

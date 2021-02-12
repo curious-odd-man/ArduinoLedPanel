@@ -5,15 +5,13 @@
 
 #ifdef COLLECT_METRIX
 
-#include <string>
+#include <WString.h>
 
 namespace MetricsCollector {
+void init();
+String getPrometheusOutput();
 
-std::string getPrometheusOutput();
-
-void logLoopTotalTime(long ms);
-
-
+void logLoopTotalTime(unsigned long start, unsigned long end);
 
 }
 

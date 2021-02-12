@@ -1,9 +1,10 @@
-#include <string>
+#include <WString.h>
 
 #include "WebServer.h"
 #include "../util/Leds.h"
 #include "../prog/Effects.h"
 #include "../util/common.h"
+#include "../metrics/MetricsCollector.h"
 
 
 using namespace std;
@@ -23,9 +24,18 @@ void WebServer::begin() {
 	server.on(Uri("/main.js"), std::bind(&WebServer::srv_handle_main_js, this));
 	server.on(Uri("/modes"), std::bind(&WebServer::srv_handle_modes, this));
 	server.on(Uri("/set"), std::bind(&WebServer::srv_handle_set, this));
+#ifdef COLLECT_METRIX
+	server.on(Uri("/prometheus"), std::bind(&WebServer::srv_prometheus, this));
+#endif
 	server.onNotFound(std::bind(&WebServer::srv_handle_not_found, this));
 	server.begin();
 }
+
+#ifdef COLLECT_METRIX
+void WebServer::srv_prometheus() {
+	server.send(200, "text/plain", MetricsCollector::getPrometheusOutput());
+}
+#endif
 
 void WebServer::srv_handle_not_found() {
 	server.send(404, "text/plain", "File Not Found");
@@ -59,10 +69,10 @@ static const ProgSupplier suppliers[] = { []() {
 } };
 
 void WebServer::srv_handle_set() {
-	std::map<string, string> arguments;
+	std::map<String, String> arguments;
 	for (uint8_t i = 0; i < server.args(); i++) {
 		arguments.insert(
-				std::pair<string, string>(server.argName(i).c_str(),
+				std::pair<String, String>(server.argName(i).c_str(),
 						server.arg(i).c_str()));
 	}
 
