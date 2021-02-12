@@ -43,14 +43,6 @@ void WiFiWrapper::begin() {
 	}
 
 	LOG(WiFi.localIP());
-
-	/*// FIXME: Do i need UPD here?
-	 // Сообщить UDP порт, на который ожидаются подключения
-	 if (isConnected() || ap_connected) {
-	 Serial.print(F("UDP-сервер на порту "));
-	 Serial.println(udp_port);
-	 }
-	 */
 }
 
 void WiFiWrapper::loop() {
