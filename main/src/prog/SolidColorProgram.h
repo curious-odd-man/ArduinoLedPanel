@@ -10,9 +10,9 @@ private:
 	CRGB color;
 	TimerMs changeTimer;
 public:
-	SolidColorProgram(const CRGB &color, uint8_t changeTimeSeconds);
+	SolidColorProgram(const CRGB &color, uint8_t changeTimeMs);
 	SolidColorProgram() :
-			SolidColorProgram(randomColor(), random(10)) {
+			SolidColorProgram(randomColor(), random(200, 500)) {
 
 	}
 	virtual void loop() override;

@@ -2,8 +2,8 @@
 
 #include "../util/common.h"
 
-SolidColorProgram::SolidColorProgram(const CRGB &color, uint8_t changeTimeSeconds) :
-		color(color), changeTimer(changeTimeSeconds, false) {
+SolidColorProgram::SolidColorProgram(const CRGB &color, uint8_t changeTimeMs) :
+		color(color), changeTimer(changeTimeMs, false) {
 	LOG("Solid Color Program created");
 }
 
