@@ -17,7 +17,7 @@ bool SnowflakeCmp::operator()(const Snowflake *lhs, const Snowflake *rhs) const 
 
 SnowProgram::SnowProgram() :
 		nextSnowflakeAt(0) {
-	LOG("Snow program starts");
+	LOG("Snow program created");
 }
 
 void SnowProgram::loop() {

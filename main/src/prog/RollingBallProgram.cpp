@@ -12,7 +12,7 @@ static TimerMs drawTimer(20);
 #define MOV_VEC randomFloat(0.05, 0.1)
 
 RollingBallProgram::RollingBallProgram(uint8_t size) :
-		position(ceil(WIDTH / 2), ceil(HEIGHT / 2)), movement(MOV_VEC, MOV_VEC), size(size) {
+		position(ceil(WIDTH / 2), ceil(HEIGHT / 2)), movement(MOV_VEC, MOV_VEC), size(size), colors() {
 	LOGF("Created ball at pos [%f,%f] with vector [%f,%f]\n", position.getX(), position.getY(), movement.getX(), movement.getY());
 	movement.setY(movement.getX());
 }
@@ -20,6 +20,14 @@ RollingBallProgram::RollingBallProgram(uint8_t size) :
 void RollingBallProgram::loop() {
 	if (!drawTimer.isReady()) {
 		return;
+	}
+
+	if (colors.empty() && colorProgram != nullptr) {
+		for (byte i = 0; i < size; i++) {
+			for (byte j = 0; j < size; j++) {
+				colors.push_back(colorProgram->getColor(i, j));
+			}
+		}
 	}
 
 	position.move(movement);
@@ -50,7 +58,7 @@ void RollingBallProgram::loop() {
 			if (colorProgram == nullptr) {
 				Leds::drawPixelAA(position.getX() + i, position.getY() + j, WHITE_COLOR);
 			} else {
-				Leds::drawPixelAA(position.getX() + i, position.getY() + j, colorProgram->getColor(i, j));
+				Leds::drawPixelAA(position.getX() + i, position.getY() + j, colors[i + j * size]);
 			}
 		}
 	}

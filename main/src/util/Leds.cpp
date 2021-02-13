@@ -25,7 +25,7 @@ void initialize() {
 }
 
 void fillLeds(const CRGB &color) {
-	FastLED.showColor(color);
+	fill_n(leds, NUM_LEDS, color);
 	redraw();
 }
 

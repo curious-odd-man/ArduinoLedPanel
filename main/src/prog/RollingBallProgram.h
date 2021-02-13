@@ -3,6 +3,7 @@
 
 #include "ImageProgram.h"
 #include "../util/Point2d.h"
+#include <vector>
 
 class RollingBallProgram: public ImageProgram {
 public:
@@ -18,5 +19,6 @@ private:
 	Point2d<float> position;
 	Point2d<float> movement;
 	uint8_t size;
+	vector<CRGB> colors;
 };
 #endif /* ROLLINGBALLPROGRAM_H_ */

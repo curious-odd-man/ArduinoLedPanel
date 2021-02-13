@@ -15,6 +15,7 @@ public:
 			colorProgram(nullptr) {
 
 	}
+
 	// Optionally, some programs may use ColorProgram to utilize
 	void setColorProgram(ColorProgram *prog) {
 		colorProgram = prog;

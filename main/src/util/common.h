@@ -17,6 +17,7 @@ using namespace std;
 #define LOGF_ERROR(x, ...) LOGLINE("ERR"); Serial.printf(x, __VA_ARGS__)
 #define LOG(x)             LOGLINE("INF"); Serial.println(x)
 #define LOGF(x, ...)       LOGLINE("INF"); Serial.printf(x, __VA_ARGS__)
+#define LOG_COLOR(t, c)    LOGLINE("INF"); Serial.printf("Color: 0x%02x%02x%02x. %s", c.r, c.g, c.b, t)
 
 inline float randomFloat(float x, float y) {
 	return ((float) random(x * 1000, y * 1000)) / 1000.0;

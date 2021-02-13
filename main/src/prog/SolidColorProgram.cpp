@@ -2,16 +2,17 @@
 
 #include "../util/common.h"
 
-SolidColorProgram::SolidColorProgram(const CRGB &color) :
-		color(color), isSet(false) {
-
+SolidColorProgram::SolidColorProgram(const CRGB &color, uint8_t changeTimeSeconds) :
+		color(color), changeTimer(changeTimeSeconds, false) {
+	LOG("Solid Color Program created");
 }
 
 void SolidColorProgram::loop() {
-	if (!isSet) {
-		isSet = true;
-		Leds::fillLeds(color);
+	if (!changeTimer.isReady()) {
+		return;
 	}
+
+	Leds::fillLeds(colorProgram == nullptr ? color : colorProgram->getColor(0, 0));
 }
 
 SolidColorProgram::~SolidColorProgram() {
