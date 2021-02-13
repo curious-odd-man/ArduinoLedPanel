@@ -28,7 +28,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/ESP_EEPROM/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/FastLED/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/Time}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/main}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/esp8266/src}&quot;"/>
 								</option>
@@ -45,7 +44,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/ESP_EEPROM/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/FastLED/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/Time}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/main}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/esp8266/src}&quot;"/>
 								</option>
@@ -62,7 +60,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/ESP_EEPROM/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/FastLED/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/Time}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/WiFi/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/main}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Lamp/libraries/esp8266/src}&quot;"/>
 								</option>
@@ -97,4 +94,3 @@
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
-

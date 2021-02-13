@@ -45,4 +45,8 @@ constexpr uint8_t maxY() {
 
 }
 
+inline CRGB randomColor() {
+	return CRGB(random(256), random(256), random(256));
+}
+
 #endif /* LEDS_LEDS_H_ */

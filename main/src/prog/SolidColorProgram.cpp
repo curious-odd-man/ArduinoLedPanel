@@ -2,17 +2,16 @@
 
 #include "../util/common.h"
 
-
-SolidColorProgram::SolidColorProgram(CRGB color) :
-        color(color), isSet(false) {
+SolidColorProgram::SolidColorProgram(const CRGB &color) :
+		color(color), isSet(false) {
 
 }
 
 void SolidColorProgram::loop() {
-    if (!isSet) {
-        isSet = true;
-        Leds::fillLeds(color);
-    }
+	if (!isSet) {
+		isSet = true;
+		Leds::fillLeds(color);
+	}
 }
 
 SolidColorProgram::~SolidColorProgram() {

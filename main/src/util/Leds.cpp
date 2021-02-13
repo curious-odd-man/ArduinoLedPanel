@@ -6,7 +6,7 @@ namespace Leds {
 
 static constexpr int LED_PIN = 2;
 static constexpr int CURRENT_LIMIT = 400; // mA, 0 to turn off
-static constexpr int BRIGHTNESS = 100;
+static constexpr int BRIGHTNESS = 10;
 static constexpr EOrder COLOR_ORDER = GRB;
 
 static CRGB leds[NUM_LEDS];
@@ -135,6 +135,7 @@ void drawPixel(uint8_t x, uint8_t y, const CRGB &color) {
 	shouldRedraw = true;
 }
 
+// TODO: This could also receive ColorProgram* and use it
 void printDigit3x5(uint8_t x, uint8_t y, uint8_t d, const CRGB &color) {
 	if (d > 9) {
 		return printDigit3x5(x, y, '0', color);

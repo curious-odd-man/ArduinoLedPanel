@@ -1,10 +1,13 @@
 #ifndef COMMON_H_
 #define COMMON_H_
 
+#include <algorithm>
 #include <Arduino.h>
 
-#define min(a,b) std::min(a, b)
-#define max(a,b) std::max(a, b)
+using namespace std;
+
+#define min(a,b) min(a, b)
+#define max(a,b) max(a, b)
 
 #define LOGGING_INIT Serial.begin(115200)
 

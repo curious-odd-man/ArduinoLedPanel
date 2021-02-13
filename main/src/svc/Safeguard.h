@@ -6,24 +6,24 @@
 
 class Safeguard: public Service {
 public:
-    Safeguard();
-    inline bool isSafe() {
-        return safe;
-    }
+	Safeguard();
+	inline bool isSafe() {
+		return safe;
+	}
 
-    void init(uint8_t compileDateHash);
-    virtual void begin() override {
-    }
+	void init(uint8_t compileDateHash);
+	virtual void begin() override {
+	}
 
-    virtual void loop() override;
-    virtual ~Safeguard() {
-    }
+	virtual void loop() override;
+	virtual ~Safeguard() {
+	}
 
 private:
-    bool safe;
-    TimerMs safenessTimer;
-    uint8_t semaforeValue;
-    bool onTimer;
+	bool safe;
+	TimerMs safenessTimer;
+	uint8_t semaforeValue;
+	bool onTimer;
 };
 
 #endif /* SAFEGUARD_H_ */

@@ -16,9 +16,8 @@ public:
 
 	}
 	// Optionally, some programs may use ColorProgram to utilize
-	ImageProgram(ColorProgram *prog) :
-			colorProgram(prog) {
-
+	void setColorProgram(ColorProgram *prog) {
+		colorProgram = prog;
 	}
 
 	virtual ~ImageProgram() {

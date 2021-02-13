@@ -6,7 +6,6 @@
 #include "../util/common.h"
 #include "../metrics/MetricsCollector.h"
 
-
 using namespace std;
 
 String modes = "";
@@ -58,6 +57,12 @@ static int currentProgram = -1;
 typedef std::function<ImageProgram* ()> ProgSupplier;
 
 static const ProgSupplier suppliers[] = { []() {
+	return new FadingStarsProgram();
+},
+[]() {
+	return new RollingBallProgram();
+},
+[]() {
 	return new RunningTextProgram("Hello Alina! Моя любимая женушка!",
 			CRGB(CRGB::DarkSeaGreen));
 },
@@ -65,8 +70,13 @@ static const ProgSupplier suppliers[] = { []() {
 	return new SnowProgram();
 },
 []() {
+	return new SolidColorProgram();
+},
+[]() {
 	return new TimeProgram();
 } };
+
+constexpr int NUM_PROGRAMS = sizeof(suppliers) / sizeof(ProgSupplier);
 
 void WebServer::srv_handle_set() {
 	std::map<String, String> arguments;
@@ -113,9 +123,11 @@ void WebServer::srv_handle_set() {
 //            }
 //        }
 
-	currentProgram = (++currentProgram)
-			% (sizeof(suppliers) / sizeof(ProgSupplier));
-	ledService.startNewProgram(suppliers[currentProgram]());
+	++currentProgram;
+	currentProgram %= NUM_PROGRAMS;
+	ImageProgram *prog = suppliers[currentProgram]();
+	prog->setColorProgram(createRandomColorProgram());
+	ledService.startNewProgram(prog);
 
 	/** FIXME
 	 *      if (hasNewProgram()) {

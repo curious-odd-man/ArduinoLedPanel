@@ -4,7 +4,7 @@
 #include "../util/TimerMs.h"
 #include "../util/common.h"
 
-static CRGB color = CRGB::White;
+static CRGB WHITE_COLOR = CRGB::White;
 static constexpr float WIDTH = Leds::width();
 static constexpr float HEIGHT = Leds::height();
 static TimerMs drawTimer(20);
@@ -12,10 +12,8 @@ static TimerMs drawTimer(20);
 #define MOV_VEC randomFloat(0.05, 0.1)
 
 RollingBallProgram::RollingBallProgram(uint8_t size) :
-		position(ceil(WIDTH / 2), ceil(HEIGHT / 2)), movement(MOV_VEC, MOV_VEC), size(
-				size) {
-	LOGF("Created ball at pos [%f,%f] with vector [%f,%f]\n", position.getX(),
-			position.getY(), movement.getX(), movement.getY());
+		position(ceil(WIDTH / 2), ceil(HEIGHT / 2)), movement(MOV_VEC, MOV_VEC), size(size) {
+	LOGF("Created ball at pos [%f,%f] with vector [%f,%f]\n", position.getX(), position.getY(), movement.getX(), movement.getY());
 	movement.setY(movement.getX());
 }
 
@@ -49,7 +47,11 @@ void RollingBallProgram::loop() {
 
 	for (byte i = 0; i < size; i++) {
 		for (byte j = 0; j < size; j++) {
-			Leds::drawPixelAA(position.getX() + i, position.getY() + j, color);
+			if (colorProgram == nullptr) {
+				Leds::drawPixelAA(position.getX() + i, position.getY() + j, WHITE_COLOR);
+			} else {
+				Leds::drawPixelAA(position.getX() + i, position.getY() + j, colorProgram->getColor(i, j));
+			}
 		}
 	}
 }

@@ -6,12 +6,16 @@
 
 class SolidColorProgram: public ImageProgram {
 private:
-    CRGB color;
-    bool isSet;
+	CRGB color;
+	bool isSet;
 public:
-    SolidColorProgram(CRGB color);
-    virtual void loop() override;
-    virtual ~SolidColorProgram();
+	SolidColorProgram(const CRGB &color);
+	SolidColorProgram() :
+			SolidColorProgram(randomColor()) {
+
+	}
+	virtual void loop() override;
+	virtual ~SolidColorProgram();
 
 };
 
