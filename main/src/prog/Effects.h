@@ -9,5 +9,6 @@
 #include "SnowProgram.h"
 #include "SolidColorProgram.h"
 #include "TimeProgram.h"
+#include "AnimationProgram.h"
 
 #endif

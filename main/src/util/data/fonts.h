@@ -1,5 +1,12 @@
 #ifndef FONT_H
 #define FONT_H
+
+#include <Arduino.h>
+
+static constexpr uint8_t LETTER_WIDTH = 5;
+static constexpr uint8_t LETTER_HEIGHT = 8;
+static constexpr uint8_t SPACE = 1;
+
 const uint8_t fontHEX[][5] PROGMEM = {
     {   0x00, 0x00, 0x00, 0x00, 0x00}, //   0x20 32
     {   0x00, 0x00, 0x6f, 0x00, 0x00}, // ! 0x21 33

@@ -2,6 +2,16 @@
 
 Code to control LED strip using ESP8266 module.
 
+I'm building this project based on the example of AlexGyver project.
+1. [You Tube](https://youtu.be/pzZl-3aiVsA)
+1. [GitHub](https://github.com/vvip-68/GyverPanelWiFi)
+
+The differences are:
+1. Control without Android application - only use WebUI.
+1. Source code is organized using classes and namespaces - thus it's easier to extend/modify it.
+1. No sounds as of now
+1. Bonus features as described in Features chapter below.
+
 # NOTE:
 
 This project is currently in development.

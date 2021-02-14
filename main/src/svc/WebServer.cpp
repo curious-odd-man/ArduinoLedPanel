@@ -52,19 +52,20 @@ void WebServer::srv_handle_modes() {
 	server.send(200, "text/plain", modes);
 }
 
-static int currentProgram = -1;
-
 typedef std::function<ImageProgram* ()> ProgSupplier;
 
-static const ProgSupplier suppliers[] = { []() {
+static const vector<ProgSupplier> suppliers( {
+
+[]() {
+	return new AnimationProgram(Animation::MARIO);
+}, []() {
 	return new FadingStarsProgram();
 },
 []() {
 	return new RollingBallProgram();
 },
 []() {
-	return new RunningTextProgram("Hello Alina! Моя любимая женушка!",
-			CRGB(CRGB::DarkSeaGreen));
+	return new RunningTextProgram("Hello Alina! Моя любимая женушка!", CRGB(CRGB::DarkSeaGreen));
 },
 []() {
 	return new SnowProgram();
@@ -74,16 +75,14 @@ static const ProgSupplier suppliers[] = { []() {
 },
 []() {
 	return new TimeProgram();
-} };
+} });
 
-constexpr int NUM_PROGRAMS = sizeof(suppliers) / sizeof(ProgSupplier);
+static auto currentProgram(suppliers.begin());
 
 void WebServer::srv_handle_set() {
 	std::map<String, String> arguments;
 	for (uint8_t i = 0; i < server.args(); i++) {
-		arguments.insert(
-				std::pair<String, String>(server.argName(i).c_str(),
-						server.arg(i).c_str()));
+		arguments.insert(std::pair<String, String>(server.argName(i).c_str(), server.arg(i).c_str()));
 	}
 
 	auto it = arguments.find("m");
@@ -123,9 +122,11 @@ void WebServer::srv_handle_set() {
 //            }
 //        }
 
+	ImageProgram *prog = (*currentProgram)();
 	++currentProgram;
-	currentProgram %= NUM_PROGRAMS;
-	ImageProgram *prog = suppliers[currentProgram]();
+	if (currentProgram == suppliers.end()) {
+		currentProgram = suppliers.begin();
+	}
 	prog->setColorProgram(createRandomColorProgram());
 	ledService.startNewProgram(prog);
 

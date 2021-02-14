@@ -56,8 +56,7 @@ void setup() {
 		services.push_back(&webServer);
 		services.push_back(&ledService);
 	} else {
-		LOG(
-				"The software was detected as unsafe!! Only WiFi and OTA services are running!!!\nLoad new version of software to solve this issue.");
+		LOG("The software was detected as unsafe!! Only WiFi and OTA services are running!!!\nLoad new version of software to solve this issue.");
 		services.push_back(&wifiWrapper);
 		services.push_back(&otaWrapper);
 	}

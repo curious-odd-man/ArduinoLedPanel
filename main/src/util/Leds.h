@@ -19,6 +19,8 @@ void fillLeds(const CRGB &color);
 void printDigit3x5(uint8_t x, uint8_t y, uint8_t c, const CRGB &color);
 void drawPixel(uint8_t x, uint8_t y, const CRGB &color);
 void drawPixelAA(float x, float y, const CRGB &color);
+void drawLetter(uint8_t letter, int16_t offset, const CRGB &color);
+void drawImage(uint8_t imageWidth, uint8_t imageHeight, const uint16_t *frame);
 
 void redraw();
 void loop();
